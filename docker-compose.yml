@@ -1,0 +1,12 @@
+version: '2'
+services:
+  diyuan-farm:
+    image: 1275986528/springboot-06-security
+    ports:
+      # 8082为外部访问端口 8080为内部运行端口与Dockerfile保持一致
+      - "8082:9000"
+    environment:
+      - spring.profiles.active=prod
+    # 映射文件路径
+    volumes:
+      - /usr/local/projectFile/workspace/:/usr/local/projectFile/workspace/

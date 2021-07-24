@@ -47,23 +47,13 @@
                 <groupId>com.spotify</groupId>
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>1.3.6</version>
-                <executions>
-                    <execution>
-                        <id>build-image</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
                 <configuration>
-                    <imageName>test/${project.artifactId}:${project.version}</imageName>
-                    <dockerHost>http://192.168.1.106:2375</dockerHost>
-                    <baseImage>jdk1.8</baseImage>
-                    <entryPoint>["java","-jar","-Dspring.profiles.active=dev","/${project.build.finalName}.jar"]</entryPoint>
+                    <repository>${project.artifactId}</repository>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
